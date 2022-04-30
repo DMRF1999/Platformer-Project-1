@@ -1,18 +1,26 @@
-//The player, will adjust later
+//The player(Adjust later)
 var player = {
     x: 25,
     y: 450,
+    x_v: 0,
+    y_v: 0,
+    jump: true,
     height: 40,
     width: 40
 };
 
-//Variables for player control
+//Variables for player control(Jump will be added into here)
 var controls = {
     right: false,
     left: false,
+    up: false,
 }
 
-//Number of platforms in level
+//Friction and Gravity for better feeling movement(Needs work)
+var gravity = 0.6;
+var friction = 0.7;
+
+//Number of platforms in level(Adjust later)
 var num = 5;
 var platforms = [];
 
@@ -40,6 +48,10 @@ function keyDown(e) {
         controls.left = true;
     } if (e.keyCode == 39) {
         controls.right = true;
+    } if (e.keyCode == 38) {
+        if(player.jump == false) {
+            player.y_v = -10;
+        }
     }
 }
 
@@ -48,6 +60,10 @@ function keyUp(e) {
         controls.left = false;
     } if(e.keyCode == 39) {
         controls.right = false;
+    } if(e.keyCode == 38) {
+        if(player.y_v < -2) {
+            player.y_v = -3;
+        }
     }
 }
 
@@ -57,7 +73,7 @@ function renderCanvas() {
     context.fillRect(0, 0, 1000, 1000)
 }
 
-//Player Render(Want to figure out how to use outside model.)
+//Player Render
 function renderPlayer() {
     context.fillStyle  = '#1305A1';
     context.fillRect((player.x) - 20, (player.y) - 20, player.width, player.height)
@@ -80,13 +96,20 @@ function render() {
         player.x += -3;
     } if(controls.right) {
         player.x += 3;
+    } if(player.jump == false) {
+        player.x_v *= friction;
+    } else {
+        player.y_v += gravity;
     }
+    player.jump = true;
+    player.y += player.y_v;
+    player.x += player.x_v;
     renderCanvas();
     renderPlayer();
     renderPlatform();
 }
 
-//Event Listeners
+//Event Listeners(Left, right, jump)
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp)
 
