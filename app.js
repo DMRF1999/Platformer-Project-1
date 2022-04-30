@@ -96,8 +96,10 @@ function render() {
         player.x += -3;
     } if(controls.right) {
         player.x += 3;
+//Applies friction when on ground
     } if(player.jump == false) {
         player.x_v *= friction;
+//Applies gravity when not on ground
     } else {
         player.y_v += gravity;
     }
@@ -109,7 +111,7 @@ function render() {
     renderPlatform();
 }
 
-//Event Listeners(Left, right, jump)
+//Event Listeners
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp)
 
