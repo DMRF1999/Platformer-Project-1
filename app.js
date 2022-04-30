@@ -1,4 +1,4 @@
-//The player will be here, will adjust later
+//The player, will adjust later
 var player = {
     x: 25,
     y: 450,
@@ -7,7 +7,10 @@ var player = {
 };
 
 //Variables for player control
-
+var controls = {
+    right: false,
+    left: false,
+}
 
 //Number of platforms in level
 var num = 5;
@@ -28,6 +31,23 @@ function createPlatform() {
             width: 100 - ((Math.random() * 20)),
             height: 15
         })
+    }
+}
+
+//Functions to implement movement(Work in progress)
+function keyDown(e) {
+    if(e.keyCode == 37) {
+        controls.left = true;
+    } if (e.keyCode == 39) {
+        controls.right = true;
+    }
+}
+
+function keyUp(e) {
+    if(e.keyCode == 37) {
+        controls.left = false;
+    } if(e.keyCode == 39) {
+        controls.right = false;
     }
 }
 
@@ -54,13 +74,22 @@ function renderPlatform() {
     context.fillRect(platforms[4].x, platforms[4].y, platforms[4].width, platforms[4].height);
 }
 
-//Function that combines all renders
+//Function that combines all Renders/Movement
 function render() {
+    if(controls.left) {
+        player.x += -3;
+    } if(controls.right) {
+        player.x += 3;
+    }
     renderCanvas();
     renderPlayer();
     renderPlatform();
 }
 
+//Event Listeners
+document.addEventListener('keydown', keyDown);
+document.addEventListener('keyup', keyUp)
+
 //TESTING
 createPlatform();
-render();
+setInterval(render, 10)
