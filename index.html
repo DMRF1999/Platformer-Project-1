@@ -7,8 +7,20 @@
     <link rel="stylesheet" href="style.css">
     <title>Platformer</title>
 </head>
-<canvas id='canvas'></canvas>
 <body>
+    <div id="start-screen">Start Game
+        <button onclick="setInterval(startGame, 17)"></button>
+    </div>
+    <div id="restart"> Restart
+        <button onclick="resetPosition()"></button>
+    </div>
+    <h2 id="death-count" class="death-count">Deaths:</h2>
+    <canvas id='canvas'></canvas>
+    <div id="gameover-screen" class="screen" style="display:none">
+        <h1>Game Over
+            Refresh to start again...
+        </h1>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
