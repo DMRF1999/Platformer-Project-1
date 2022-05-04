@@ -1,5 +1,5 @@
 body {
-    height: 100%;
+    margin: auto;
 }
 
 #canvas {
@@ -8,7 +8,21 @@ body {
 }
 
 #death-count {
-    position: absolute;
+    position: relative;
     top: 0px;
     right: 0px;
+}
+
+#start-screen {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    display: grid ;
+}
+
+#restart {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    display: grid ;
 }

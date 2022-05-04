@@ -23,7 +23,7 @@ let controls = {
 let deaths = 0;
 
 //Friction and Gravity for better feeling movement(Needs work)
-let gravity = 0.6;
+let gravity = 0.4;
 let friction = 0.7;
 
 //Number of platforms in level(Adjust later)
@@ -40,6 +40,7 @@ let context = canvas.getContext('2d');
 context.canvas.height = 650;
 context.canvas.width = 800;
 
+//Function to switch screens
 function toggleScreen(id, toggle) {
     let element = document.getElementById(id);
     let display = (toggle) ? 'block' : 'none';
@@ -52,6 +53,14 @@ function createPlatform() {
         platforms.push({
             x: 125 * i,
             y: 500 - ((Math.random() * 100) * i), 
+            width: 100 - ((Math.random() * 20)),
+            height: 15
+        })
+    }
+    if(i == num) {
+        platforms.push({
+            x: 125 * i,
+            y: 500,
             width: 100 - ((Math.random() * 20)),
             height: 15
         })
@@ -111,6 +120,12 @@ function renderLava() {
     context.fillRect(lava1[0].x, lava1[0].y, lava1[0].width, lava1[0].height);
 }
 
+//Portal render
+function renderPortal() {
+    context.fillStyle - 'blue'
+    context.fillRect(portal1[0].x, portal1[0].y, portal1[0].width, portal1[0].height)
+}
+
 //Player Render
 function renderPlayer() {
     context.fillStyle  = p1.color;
@@ -126,6 +141,7 @@ function renderPlatform() {
     context.fillRect(platforms[3].x, platforms[3].y, platforms[3].width, platforms[3].height);
     context.fillRect(platforms[4].x, platforms[4].y, platforms[4].width, platforms[4].height);
     context.fillRect(platforms[5].x, platforms[5].y, platforms[5].width, platforms[5].height);
+    context.fillRect(platforms[6].x, platforms[6].y, platforms[6].width, platforms[6].height);
 }
 
 //Respawn Player
@@ -143,6 +159,8 @@ function resetPosition() {
 
 //Running the game
 function startGame() {
+    this.toggleScreen('start-screen', false);
+    this.toggleScreen('victory-screen', false);
     this.toggleScreen('gameover-screen', false);
     this.toggleScreen('canvas', true);
     document.getElementById('death-count').innerHTML = 'Deaths:' + deaths;
@@ -191,6 +209,10 @@ function startGame() {
     if(platforms[5].x < p1.x && p1.x < platforms[5].x + platforms[5].width && platforms[5].y < p1.y && p1.y < platforms[5].y + platforms[5].height) {
         i = 5;
     }
+    if(platforms[6].x < p1.x && p1.x < platforms[6].x + platforms[6].width && platforms[6].y < p1.y && p1.y < platforms[6].y + platforms[6].height) {
+        i = 6;
+        winGame();
+    }
     if(i > -1) {
         p1.jump = false;
         p1.y = platforms[i].y
@@ -207,15 +229,24 @@ function startGame() {
     renderLava();
     renderPlayer();
     renderPlatform();
-
 }
 
-//Game over scenario(Work in progress)
+//Game over scenario
 function stopGame() {
-    console.log('stop game')
+    this.toggleScreen('start-screen', false)
+    this.toggleScreen('victory-screen', false)
     this.toggleScreen('canvas', false);
     this.toggleScreen('gameover-screen', true);
-    clearInterval(startGame)
+    clearInterval()
+}
+
+//Victory scenario
+function winGame() {
+    this.toggleScreen('start-screen', false)
+    this.toggleScreen('canvas', false);
+    this.toggleScreen('gameover-screen', false)
+    this.toggleScreen('victory-screen', true)
+    clearInterval()
 }
 
 
