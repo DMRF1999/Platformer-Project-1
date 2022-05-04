@@ -10,7 +10,7 @@ class Player {
         this.color = color;
     }
 }
-let p1 = new Player(15,450,0,0,true,20,20,'rgb(0, 0, 0)')
+let p1 = new Player(15,500,0,0,true,20,20,'rgb(0, 0, 0)')
 
 //Variables for player control(Jump will be added into here)
 let controls = {
@@ -34,6 +34,10 @@ let platforms = [];
 let lava = 1;
 let lava1 = [];
 
+//Wall Variables
+let wall = 1;
+let wall1 = [];
+
 //Variables for canvas
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
@@ -52,7 +56,7 @@ function createPlatform() {
     for(i = 0; i < num; i++) {
         platforms.push({
             x: 125 * i,
-            y: 500 - ((Math.random() * 100) * i), 
+            y: 500 - ((Math.random() * 45) * i), 
             width: 100 - ((Math.random() * 20)),
             height: 15
         })
@@ -74,7 +78,19 @@ function createLava() {
             x: 0,
             y: 600,
             width: 800,
-            height: 25
+            height: 50
+        })
+    }
+}
+
+//Back Wall
+function createBackWall() {
+    for(i = 0; i< wall; i++) {
+        wall1.push({
+            x: 795,
+            y: 0,
+            width: 25,
+            height: 800,
         })
     }
 }
@@ -120,10 +136,10 @@ function renderLava() {
     context.fillRect(lava1[0].x, lava1[0].y, lava1[0].width, lava1[0].height);
 }
 
-//Portal render
-function renderPortal() {
-    context.fillStyle - 'blue'
-    context.fillRect(portal1[0].x, portal1[0].y, portal1[0].width, portal1[0].height)
+//Wall render
+function renderBackWall() {
+    context.fillStyle = 'black'
+    context.fillRect(wall1[0].x, wall1[0].y, wall1[0].width, wall1[0].height)
 }
 
 //Player Render
@@ -147,7 +163,7 @@ function renderPlatform() {
 //Respawn Player
 function resetPosition() {
     p1.x = 15;
-    p1.y = 450;
+    p1.y = 500;
     p1.x_v = 0;
     p1.y_v = 0;
     p1.jump = true;
@@ -159,10 +175,10 @@ function resetPosition() {
 
 //Running the game
 function startGame() {
+    this.toggleScreen('canvas', true);
     this.toggleScreen('start-screen', false);
     this.toggleScreen('victory-screen', false);
     this.toggleScreen('gameover-screen', false);
-    this.toggleScreen('canvas', true);
     document.getElementById('death-count').innerHTML = 'Deaths:' + deaths;
 
     //Player is on ground, apply friction
@@ -227,32 +243,44 @@ function startGame() {
     //Everything being rendered
     renderCanvas();
     renderLava();
+    renderBackWall();
     renderPlayer();
     renderPlatform();
+    
 }
 
 //Game over scenario
 function stopGame() {
+    clearInterval(interval)
     this.toggleScreen('start-screen', false)
     this.toggleScreen('victory-screen', false)
     this.toggleScreen('canvas', false);
     this.toggleScreen('gameover-screen', true);
-    clearInterval()
 }
 
 //Victory scenario
 function winGame() {
+    clearInterval(interval);
     this.toggleScreen('start-screen', false)
     this.toggleScreen('canvas', false);
     this.toggleScreen('gameover-screen', false)
     this.toggleScreen('victory-screen', true)
-    clearInterval()
 }
 
+function startScreen() {
+    this.toggleScreen('start-screen', true)
+    this.toggleScreen('canvas', false)
+    this.toggleScreen('gameover-screen', false)
+    this.toggleScreen('victory-screen', false)
+}
 
 //Event Listeners
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
 
+var interval = setInterval(startGame, 17)
+
+startScreen();
 createPlatform();
+createBackWall();
 createLava();

@@ -9,14 +9,12 @@
 </head>
 <body>
     <div id="start-screen" class="screen" style="display:block">Start Game
-        <button onclick="setInterval(startGame, 22)"></button>
+        <button onclick='setInterval(interval)'></button>
     </div>
-    <h2 id="death-count" class="death-count">Deaths:</h2>
+    <h2 id="death-count" class="death-count"></h2>
     <canvas id='canvas'></canvas>
     <div id="gameover-screen" class="screen" style="display:none">
-        <h1>Game Over
-            Refresh to start again...
-        </h1>
+        <h1>With this character's death, the thread of prophecy is severed.  Refresh the page to restore the weave of fate, or persist in the doomed world you have created.</h1>
     </div>
     <div id="victory-screen" class="screen" style="display: none">
         <h1>The jump master himself has completed the level
