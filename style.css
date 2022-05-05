@@ -1,5 +1,6 @@
 body {
     margin: auto;
+    background-color: black;
 }
 
 #canvas {
@@ -11,13 +12,24 @@ body {
     position: relative;
     top: 0px;
     right: 0px;
+    background-color: black;
+    color: white;
 }
 
-#start-screen {
+#gameover-screen {
     text-align: center;
     margin: auto;
     display: flex;
     display: grid ;
+    color: white;
+}
+
+#victory-screen {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    display: grid ;
+    color: white;
 }
 
 #restart {
@@ -25,4 +37,85 @@ body {
     margin: auto;
     display: flex;
     display: grid ;
+}
+
+
+.lava0 {
+    position: absolute;
+    bottom: -50px;
+    left: 0%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava1 {
+    position: absolute;
+    bottom: -50px;
+    left: 11%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava2 {
+    position: absolute;
+    bottom: -50px;
+    left: 21%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava3 {
+    position: absolute;
+    bottom: -50px;
+    left: 31%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava4 {
+    position: absolute;
+    bottom: -50px;
+    left: 41%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava5 {
+    position: absolute;
+    bottom: -50px;
+    left: 51%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava6 {
+    position: absolute;
+    bottom: -50px;
+    left: 61%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava7 {
+    position: absolute;
+    bottom: -50px;
+    left: 71%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava8 {
+    position: absolute;
+    bottom: -50px;
+    left: 81%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lava9 {
+    position: absolute;
+    bottom: -50px;
+    left: 88%;
+    max-width: 100%;
+    max-height: 100%;
 }

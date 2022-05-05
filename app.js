@@ -10,7 +10,22 @@ class Player {
         this.color = color;
     }
 }
+
 let p1 = new Player(15,500,0,0,true,20,20,'rgb(0, 0, 0)')
+
+//Pictures
+let background = new Image();
+background.src = 'Assets/Images/background.png'
+
+//Audio files
+let death_sound = new Audio('Assets/Audio/death_sound.mp3')
+death_sound.volume = 0.3;
+
+let hit_sound = new Audio('Assets/Audio/hit.wav')
+hit_sound.volume = 0.1;
+
+let victory_sound = new Audio('Assets/Audio/victory.mp3')
+victory_sound.volume = 0.3;
 
 //Variables for player control(Jump will be added into here)
 let controls = {
@@ -87,7 +102,7 @@ function createLava() {
 function createBackWall() {
     for(i = 0; i< wall; i++) {
         wall1.push({
-            x: 795,
+            x: 793,
             y: 0,
             width: 25,
             height: 800,
@@ -97,11 +112,11 @@ function createBackWall() {
 
 //Functions to implement movement
 function keyDown(e) {
-    if(e.keyCode == 37) {
+    if(e.keyCode == 65) {
         controls.left = true;
-    } if (e.keyCode == 39) {
+    } if (e.keyCode == 68) {
         controls.right = true;
-    } if (e.keyCode == 38) {
+    } if (e.keyCode == 87) {
         if(p1.jump == false) {
             p1.y_v = -10;
             p1.color = '#' + Math.floor(Math.random() * 16777216).toString(16);
@@ -113,11 +128,11 @@ function keyDown(e) {
 }
 
 function keyUp(e) {
-    if(e.keyCode == 37) {
+    if(e.keyCode == 65) {
         controls.left = false;
-    } if(e.keyCode == 39) {
+    } if(e.keyCode == 68) {
         controls.right = false;
-    } if(e.keyCode == 38) {
+    } if(e.keyCode == 87) {
         if(p1.y_v < -2) {
             p1.y_v = -3;
         }
@@ -126,8 +141,9 @@ function keyUp(e) {
 
 //Canvas render
 function renderCanvas() {
-    context.fillStyle = 'white';
+    context.fillStyle = '(40,48,56,0.25)';
     context.fillRect(0, 0, 800, 650)
+    context.drawImage(background, 0, 0)
 }
 
 //Lava render
@@ -171,12 +187,13 @@ function resetPosition() {
     p1.width = 20;
     p1.color = 'rgb(0, 0, 0)';
     deaths += 1;
+    hit_sound.play();
 }
+
 
 //Running the game
 function startGame() {
     this.toggleScreen('canvas', true);
-    this.toggleScreen('start-screen', false);
     this.toggleScreen('victory-screen', false);
     this.toggleScreen('gameover-screen', false);
     document.getElementById('death-count').innerHTML = 'Deaths:' + deaths;
@@ -252,35 +269,27 @@ function startGame() {
 //Game over scenario
 function stopGame() {
     clearInterval(interval)
-    this.toggleScreen('start-screen', false)
     this.toggleScreen('victory-screen', false)
     this.toggleScreen('canvas', false);
     this.toggleScreen('gameover-screen', true);
+    death_sound.play();
 }
 
 //Victory scenario
 function winGame() {
     clearInterval(interval);
-    this.toggleScreen('start-screen', false)
     this.toggleScreen('canvas', false);
     this.toggleScreen('gameover-screen', false)
     this.toggleScreen('victory-screen', true)
-}
-
-function startScreen() {
-    this.toggleScreen('start-screen', true)
-    this.toggleScreen('canvas', false)
-    this.toggleScreen('gameover-screen', false)
-    this.toggleScreen('victory-screen', false)
+    victory_sound.play();
 }
 
 //Event Listeners
 document.addEventListener('keydown', keyDown);
 document.addEventListener('keyup', keyUp);
 
-var interval = setInterval(startGame, 17)
+var interval = setInterval(startGame, 17) 
 
-startScreen();
 createPlatform();
 createBackWall();
 createLava();
