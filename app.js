@@ -37,11 +37,11 @@ let controls = {
 //Death Variable
 let deaths = 0;
 
-//Friction and Gravity for better feeling movement(Needs work)
+//Friction and Gravity for better feeling movement
 let gravity = 0.4;
 let friction = 0.7;
 
-//Number of platforms in level(Adjust later)
+//Number of platforms in level
 let num = 6;
 let platforms = [];
 
@@ -66,7 +66,7 @@ function toggleScreen(id, toggle) {
     element.style.display = display;
 }
 
-//Creation of Platforms, want to work on random generation
+//Creation of Platforms
 function createPlatform() {
     for(i = 0; i < num; i++) {
         platforms.push({
@@ -148,7 +148,7 @@ function renderCanvas() {
 
 //Lava render
 function renderLava() {
-    context.fillStyle = 'red'
+    context.fillStyle = '#E16811'
     context.fillRect(lava1[0].x, lava1[0].y, lava1[0].width, lava1[0].height);
 }
 
@@ -198,6 +198,7 @@ function startGame() {
     this.toggleScreen('gameover-screen', false);
     document.getElementById('death-count').innerHTML = 'Deaths:' + deaths;
     document.getElementById('title').innerHTML = 'The Jumpmaster';
+    document.getElementById('instructions').innerHTML = 'W is jump, A is left, D is right'
 
     //Player is on ground, apply friction
     if(p1.jump == false) {
