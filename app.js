@@ -71,7 +71,7 @@ function createPlatform() {
     for(i = 0; i < num; i++) {
         platforms.push({
             x: 125 * i,
-            y: 500 - ((Math.random() * 45) * i), 
+            y: 500 - ((Math.random() * 40) * i), 
             width: 100 - ((Math.random() * 20)),
             height: 15
         })
@@ -197,6 +197,7 @@ function startGame() {
     this.toggleScreen('victory-screen', false);
     this.toggleScreen('gameover-screen', false);
     document.getElementById('death-count').innerHTML = 'Deaths:' + deaths;
+    document.getElementById('title').innerHTML = 'Magma Man';
 
     //Player is on ground, apply friction
     if(p1.jump == false) {
