@@ -11,7 +11,7 @@ class Player {
     }
 }
 
-let p1 = new Player(15,500,0,0,true,20,20,'rgb(0, 0, 0)')
+let p1 = new Player(50,500,0,0,true,20,20,'rgb(0, 0, 0)')
 
 //Pictures
 let background = new Image();
@@ -178,7 +178,7 @@ function renderPlatform() {
 
 //Respawn Player
 function resetPosition() {
-    p1.x = 15;
+    p1.x = 50;
     p1.y = 500;
     p1.x_v = 0;
     p1.y_v = 0;
