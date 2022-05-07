@@ -10,11 +10,11 @@ Every time the page is refreshed the platforms will be different
 If you fall 5 times, you get a game over and must refresh the page to play again
 If you make it to the last platform you win
 
-![screenshot0](https://gyazo.com/bee0e0a72322f4827ee5abfddb1dcf29)
+![screenshot0](Assets/Images/Game1.png)
 
-![screenshot1](https://gyazo.com/c281e5c12fe34842f5a58e0185519525)
+![screenshot1](Assets/Images/game2.png)
 
-![screenshot2](https://gyazo.com/24f1d163be47f427c58ae36963f0f1a5)
+![screenshot2](Assets/Images/game3.png)
 
 # Technolgies Used
 This project is written in HTML, CSS, and vanilla JavaScript
@@ -44,4 +44,4 @@ As a player I would like to be able to see my death count
 
 As a player I would like to have a timer.
 
-![wireframe](https://gyazo.com/9c291e97417122a2def68451b1edd33c)
+![wireframe](Assets/Images/wireframe.png)
