@@ -120,6 +120,7 @@ function keyDown(e) {
     } if (e.keyCode == 68) {
         controls.right = true;
     } if (e.keyCode == 87) {
+        jump_sound.play();
         if(p1.jump == false) {
             p1.y_v = -10;
             p1.color = '#' + Math.floor(Math.random() * 16777216).toString(16);
@@ -210,7 +211,6 @@ function startGame() {
     //else apply gravity
     } else {
         p1.y_v += gravity;
-        jump_sound.play();
     }
     p1.jump = true;
    
