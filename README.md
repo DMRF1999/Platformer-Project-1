@@ -44,4 +44,4 @@ As a player I would like to be able to see my death count
 
 As a player I would like to have a timer.
 
-https://wireframepro.mockflow.com/editor.jsp?editor=off&publicid=M43afade3dc5911246531149e347849151651856405996&projectid=MmAU6S0kCnb&perm=Owner&integration=true&integration_type=gdriveapp&integration_data=e30=&integration_query_string=Iy9zcGFjZS9NZ1BnbHYwa0NuYg==#/page/ab36ba7364fb41bdaae8d604bb1c4694
+![wireframe](https://gyazo.com/9c291e97417122a2def68451b1edd33c)
