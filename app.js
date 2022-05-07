@@ -27,6 +27,9 @@ hit_sound.volume = 0.1;
 let victory_sound = new Audio('Assets/Audio/victory.mp3')
 victory_sound.volume = 0.3;
 
+let jump_sound = new Audio('Assets/Audio/jump.wav')
+jump_sound.volume = 0.1;
+
 //Variables for player control(Jump will be added into here)
 let controls = {
     right: false,
@@ -207,6 +210,7 @@ function startGame() {
     //else apply gravity
     } else {
         p1.y_v += gravity;
+        jump_sound.play();
     }
     p1.jump = true;
    
