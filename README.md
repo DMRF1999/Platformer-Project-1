@@ -44,4 +44,4 @@ As a player I would like to be able to see my death count
 
 As a player I would like to have a timer.
 
-![wireframe](https://gyazo.com/9c291e97417122a2def68451b1edd33c)
+![wireframe](Assets/Images/wireframe.png)
