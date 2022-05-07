@@ -38,7 +38,7 @@ let controls = {
 let deaths = 0;
 
 //Friction and Gravity for better feeling movement
-let gravity = 0.3;
+let gravity = 0.4;
 let friction = 0.7;
 
 //Number of platforms in level
@@ -71,7 +71,7 @@ function createPlatform() {
     for(i = 0; i < num; i++) {
         platforms.push({
             x: 125 * i,
-            y: 500 - ((Math.random() * 35) * i), 
+            y: 500 - ((Math.random() * 32) * i), 
             width: 100 - ((Math.random() * 20)),
             height: 15
         })
