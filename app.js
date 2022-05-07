@@ -27,6 +27,9 @@ hit_sound.volume = 0.1;
 let victory_sound = new Audio('Assets/Audio/victory.mp3')
 victory_sound.volume = 0.3;
 
+let jump_sound = new Audio('Assets/Audio/jump.wav')
+jump_sound.volume = 0.1;
+
 //Variables for player control(Jump will be added into here)
 let controls = {
     right: false,
@@ -38,7 +41,7 @@ let controls = {
 let deaths = 0;
 
 //Friction and Gravity for better feeling movement
-let gravity = 0.4;
+let gravity = 0.5;
 let friction = 0.7;
 
 //Number of platforms in level
@@ -117,6 +120,7 @@ function keyDown(e) {
     } if (e.keyCode == 68) {
         controls.right = true;
     } if (e.keyCode == 87) {
+        jump_sound.play();
         if(p1.jump == false) {
             p1.y_v = -10;
             p1.color = '#' + Math.floor(Math.random() * 16777216).toString(16);
