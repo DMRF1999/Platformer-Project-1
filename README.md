@@ -37,8 +37,6 @@ As a player, I want to be able to have a game over scenario
 
 As a player I would like to have a victory scenario
 
-As a player I would like to have a victory scenario
-
 # Stretch Goals
 As a player I would like to be able to see my death count
 
