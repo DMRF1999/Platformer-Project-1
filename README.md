@@ -10,7 +10,7 @@ Every time the page is refreshed the platforms will be different
 If you fall 5 times, you get a game over and must refresh the page to play again
 If you make it to the last platform you win
 
-![screenshot0](https://gyazo.com/bee0e0a72322f4827ee5abfddb1dcf29)
+![screenshot0](Assets/Images/Game1.png
 
 ![screenshot1](https://gyazo.com/c281e5c12fe34842f5a58e0185519525)
 
