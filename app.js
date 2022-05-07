@@ -38,7 +38,7 @@ let controls = {
 let deaths = 0;
 
 //Friction and Gravity for better feeling movement
-let gravity = 0.4;
+let gravity = 0.3;
 let friction = 0.7;
 
 //Number of platforms in level
